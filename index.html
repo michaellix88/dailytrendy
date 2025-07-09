@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Trendy Shop - Aksesoris Berkualitas</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #111;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-weight: 700;
+        }
+        
+        /* Layout */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: #000;
+            color: #fff;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 2rem;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: #f5f5f5;
+            padding: 5rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            color: #333;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #333;
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 3rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+        
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+        }
+        
+        .category-btn {
+            padding: 0.6rem 1.5rem;
+            background-color: transparent;
+            border: 1px solid #000;
+            color: #000;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background-color: #000;
+            color: #fff;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-img {
+            height: 250px;
+            width: 100%;
+            background-color: #f5f5f5;
+            position: relative;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            padding: 0.6rem;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #333;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: #fff;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-item ul {
+            list-style: none;
+        }
+        
+        .footer-item ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-item ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #333;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .logo {
+                margin-bottom: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .product-categories {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-container">
+            <div class="logo">DAILY TRENDY SHOP</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Beranda</a></li>
+                    <li><a href="#produk">Produk</a></li>
+                    <li><a href="#tentang">Tentang Kami</a></li>
+                    <li><a href="#kontak">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Perhiasan / Aksesoris Berkualitas dari DAILY TRENDY SHOP</h1>
+            <p>Raih gaya elegan dengan koleksi perhiasan eksklusif kami. Pilihan sempurna untuk melengkapi penampilan Anda. Memukau dalam kesederhanaan, menawan dalam keanggunan.</p>
+            <a href="#produk" class="btn">Lihat Koleksi</a>
+        </div>
+    </section>
+    
+    <section class="products" id="produk">
+        <div class="container">
+            <h2 class="section-title">Koleksi Kami</h2>
+            
+            <div class="product-categories">
+                <button class="category-btn active" data-category="all">Semua</button>
+                <button class="category-btn" data-category="kalung">Kalung</button>
+                <button class="category-btn" data-category="cincin">Cincin</button>
+                <button class="category-btn" data-category="gelang">Gelang</button>
+                <button class="category-btn" data-category="smartwatch">SmartWatch</button>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Kalung 1 -->
+                <div class="product-card" data-category="kalung">
+                    <div class="product-img">
+                        <img src="https://iili.io/F14GR5P.jpg" alt="Kalung Pria Elegan" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Kalung Pria Elegan</h3>
+                        <p class="product-price">12$</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+                
+                <!-- Kalung 2 -->
+                <div class="product-card" data-category="kalung">
+                    <div class="product-img">
+                        <img src="https://iili.io/F16xDIS.jpg" alt="Kalung Wanita Mewah" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Kalung Wanita Mewah</h3>
+                        <p class="product-price">13$</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+
+                <!-- Kalung 3 -->
+                <div class="product-card" data-category="kalung">
+                    <div class="product-img">
+                        <img src="https://iili.io/F16RWLN.jpg" alt="Kalung Pria Exclusive" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Kalung Pria Exclusive</h3>
+                        <p class="product-price">15$</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+
+                <!-- Kalung 4 -->
+                <div class="product-card" data-category="kalung">
+                    <div class="product-img">
+                        <img src="https://iili.io/F16hmZP.jpg" alt="Kalung Pria Luxury" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Kalung Pria Luxury</h3>
+                        <p class="product-price">15$</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+
+                <!-- Kalung 5 -->
+                <div class="product-card" data-category="kalung">
+                    <div class="product-img">
+                        <img src="https://iili.io/F16eGLB.jpg" alt="Kalung Pria Keren" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Kalung Pria Keren</h3>
+                        <p class="product-price">15$</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+                
+                <!-- Cincin 1 -->
+                <div class="product-card" data-category="cincin">
+                    <div class="product-img">
+                        <img src="https://i.postimg.cc/FKfvX34g/IMG-0247.jpg" alt="Cincin tunangan platinum dengan batu mulia biru safir, dikelilingi berlian kecil" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cincin Elegan</h3>
+                        <p class="product-price">Rp 3.500.000</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+                
+                <!-- Cincin 2 -->
+                <div class="product-card" data-category="cincin">
+                    <div class="product-img">
+                        <img src="https://i.postimg.cc/PJSVqVbL/IMG-0388.jpg" alt="Cincin emas putih dengan desain twisted modern, cocok untuk sehari-hari" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cincin Twisted Gold</h3>
+                        <p class="product-price">Rp 1.200.000</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+
+                <!-- Cincin 3 -->
+                <div class="product-card" data-category="cincin">
+                    <div class="product-img">
+                        <img src="https://i.postimg.cc/JhjTXzcC/IMG-0387.jpg" alt="Cincin emas putih dengan desain twisted modern, cocok untuk sehari-hari" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Cincin Twisted Gold</h3>
+                        <p class="product-price">Rp 1.200.000</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+                
+                <!-- Gelang 1 -->
+                <div class="product-card" data-category="gelang">
+                    <div class="product-img">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/72289a40-2018-4a34-813c-7ccfad9f7940.png" alt="Gelang rantai emas 14k dengan pengait lobster, desain classic yang timeless" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Gelang Classic Gold</h3>
+                        <p class="product-price">Rp 2.100.000</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+
+                <!-- Gelang 2 -->
+                <div class="product-card" data-category="gelang">
+                    <div class="product-img">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/72289a40-2018-4a34-813c-7ccfad9f7940.png" alt="Gelang rantai emas 14k dengan pengait lobster, desain classic yang timeless" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Gelang Classic Gold</h3>
+                        <p class="product-price">Rp 2.100.000</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+
+                <!-- Gelang 3 -->
+                <div class="product-card" data-category="gelang">
+                    <div class="product-img">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/72289a40-2018-4a34-813c-7ccfad9f7940.png" alt="Gelang rantai emas 14k dengan pengait lobster, desain classic yang timeless" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Gelang Classic Gold</h3>
+                        <p class="product-price">Rp 2.100.000</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+
+                <!-- Gelang 4 -->
+                <div class="product-card" data-category="gelang">
+                    <div class="product-img">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/72289a40-2018-4a34-813c-7ccfad9f7940.png" alt="Gelang rantai emas 14k dengan pengait lobster, desain classic yang timeless" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Gelang Classic Gold</h3>
+                        <p class="product-price">Rp 2.100.000</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+                
+                <!-- Gelang 5 -->
+                <div class="product-card" data-category="gelang">
+                    <div class="product-img">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dc252a1b-98e8-4abc-88af-3e9a6bfdd766.png" alt="Gelang perak dengan manik-manik zirconia, desain modern untuk wanita muda" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Gelang Modern Beads</h3>
+                        <p class="product-price">Rp 950.000</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+
+                <!-- Smartwatch 1 -->
+                <div class="product-card" data-category="smartwatch">
+                    <div class="product-img">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dc252a1b-98e8-4abc-88af-3e9a6bfdd766.png" alt="Gelang perak dengan manik-manik zirconia, desain modern untuk wanita muda" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Gelang Modern Beads</h3>
+                        <p class="product-price">Rp 950.000</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+
+                <!-- Smartwatch 2 -->
+                <div class="product-card" data-category="smartwatch">
+                    <div class="product-img">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/dc252a1b-98e8-4abc-88af-3e9a6bfdd766.png" alt="Gelang perak dengan manik-manik zirconia, desain modern untuk wanita muda" />
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Gelang Modern Beads</h3>
+                        <p class="product-price">Rp 950.000</p>
+                        <a href="https://wa.me/855763947213" target="_blank" class="add-to-cart">Chat Ke Whatsapp Penjual</a>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+    </section>
+    
+    <section class="about" id="tentang">
+        <div class="container">
+            <h2 class="section-title">Tentang DAILY TRENDY SHOP</h2>
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <p style="margin-bottom: 1.5rem;">DAILY TRENDY SHOP adalah toko perhiasan premium yang berkomitmen menyediakan produk berkualitas tinggi dengan desain elegan. Setiap perhiasan kami dibuat dengan ketelitian tinggi untuk memastikan kepuasan pelanggan.</p>
+                <p>Kami percaya bahwa perhiasan bukan hanya aksesori, tetapi juga cerita yang menyatu dengan pemakainya.</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer id="kontak">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-item">
+                    <h3>DAILY TRENDY SHOP</h3>
+                    <p>Perhiasan berkualitas untuk gaya hidup elegan.</p>
+                </div>
+                
+                <div class="footer-item">
+                    <h3>Kontak Kami</h3>
+                    <ul>
+                        <li>Jl. Perhiasan No. 123, Jakarta</li>
+                        <li>Email: info@hanhanshop.com</li>
+                        <li>Telp: (021) 12345678</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-item">
+                    <h3>Jam Operasional</h3>
+                    <ul>
+                        <li>Senin - Jumat: 10:00 - 20:00</li>
+                        <li>Sabtu - Minggu: 10:00 - 18:00</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-item">
+                    <h3>Media Sosial</h3>
+                    <div class="social-icons">
+                        <a href="#" style="display: inline-block; width: 30px; height: 30px; background-color: #fff; color: #000; text-align: center; line-height: 30px; border-radius: 50%;">F</a>
+                        <a href="#" style="display: inline-block; width: 30px; height: 30px; background-color: #fff; color: #000; text-align: center; line-height: 30px; border-radius: 50%;">I</a>
+                        <a href="#" style="display: inline-block; width: 30px; height: 30px; background-color: #fff; color: #000; text-align: center; line-height: 30px; border-radius: 50%;">T</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 DAILY TRENDY SHOP. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Filter produk berdasarkan kategori
+        document.addEventListener('DOMContentLoaded', function() {
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            const productCards = document.querySelectorAll('.product-card');
+            
+            categoryBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    categoryBtns.forEach(b => b.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const category = this.dataset.category;
+                    
+                    productCards.forEach(card => {
+                        if (category === 'all' || card.dataset.category === category) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Animasi scroll smooth
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Simulasi add to cart
+            const addToCartBtns = document.querySelectorAll('.add-to-cart');
+            addToCartBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const productName = this.parentElement.querySelector('.product-title').textContent;
+                    const productPrice = this.parentElement.querySelector('.product-price').textContent;
+                    
+                    alert(`Happy Shopping ! Kamu akan di arahkan ke Whatsapp Penjual.`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
